@@ -1,0 +1,10 @@
+.card {background-color:#78B9B5;}
+body {color:#0F828C;}
+iframe {color: black;}
+h1,h2 {color: #320A6B;}
+nav {background-color:#065084;}
+nav a {color: #78B9B5;}
+:active{color: #0000ff;}
+nav a:hover {background-color: #0000ff;}
+nav {padding:10px}
+nav {margin-bottom: 30px}

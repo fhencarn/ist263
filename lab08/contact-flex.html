@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Contact</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav class="site-nav">
+            <a href="index.html">Home</a>
+            <a href="skills.html">Skills</a>
+            <a class="active" href="contact-flex.html" aria-current="page">Contact</a>
+        </nav>
+        <main class="page-wrapper">
+            <h1>Contact</h1>
+
+            <section class="card address-card">
+                <h2>Address</h2>
+                <div class="address-details">
+                    <address>
+                        <p>Fernando Hernandez</p>
+                        <p>210 Lambreth Lane, Apartment 2</p>
+                        <p>Syracuse University, NY 13244</p>
+                    </address>
+                    <p><a href="mailto:fhencarn@syr.edu">fhencarn@syr.edu</a></p>
+                    <p>
+                        <a class="linkedin-link" href="https://www.linkedin.com/in/fhencarn" target="_blank" rel="noopener">
+                            My LinkedIn Profile
+                        </a>
+                    </p>
+                </div>
+            </section>
+
+            <section class="card contact-card">
+                <form class="contact-form" action="mailto:fhencarn@syr.edu" method="post" enctype="text/plain">
+                    <label for="name">Your Name:</label>
+                    <input id="name" name="name" type="text" placeholder="First and last name">
+
+                    <fieldset>
+                        <legend>Reason for contact:</legend>
+                        <label>
+                            <input type="radio" name="reason" value="office-hours">
+                            Office Hours
+                        </label>
+                        <label>
+                            <input type="radio" name="reason" value="career-consulting">
+                            Career Consulting
+                        </label>
+                    </fieldset>
+
+                    <label for="comments">Comments</label>
+                    <textarea id="comments" name="comments" rows="5" placeholder="Type your message here"></textarea>
+
+                    <button type="submit">Send</button>
+                </form>
+
+                <div class="map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2917.0544166178297!2d-76.12082442359767!3d43.01924177113927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d9f49d6332eb35%3A0x2ad7878f993ee037!2s210%20Lambreth%20Ln%2C%20Syracuse%2C%20NY%2013210!5e0!3m2!1sen!2sus!4v1757536026598!5m2!1sen!2sus"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
