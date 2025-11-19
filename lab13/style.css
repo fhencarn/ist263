@@ -46,7 +46,7 @@ a:focus-visible {
 }
 
 .site-header {
-    background-color:#5d8fdc;
+    background-color:#dfe9ff;
     box-shadow:0 2px 6px rgba(0,0,0,0.08);
 }
 
@@ -59,7 +59,7 @@ a:focus-visible {
 }
 
 .site-nav a {
-    color:#fff;
+    color:#000;
     text-decoration:none;
     font-weight:600;
 }
