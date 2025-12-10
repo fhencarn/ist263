@@ -3,9 +3,15 @@
     box-sizing: border-box;
 }
 
+.sekuya-regular {
+    font-family: "Sekuya", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
 body {
     margin: 0;
-    font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Sekuya", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.5;
     background-color: #fdfdfd;
     color: #222;
