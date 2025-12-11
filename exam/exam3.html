@@ -2,129 +2,150 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- ## Viewport meta tag for responsive web design -->
+
+    <!-- Viewport meta tag = tells browser to size the page to the device width
+         This is the core of responsive web design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>IST 263 – Post Exam 2 Practice Page</title>
 
-    <!-- ## Favicon example (would look for favicon.ico in the root folder) -->
-    <link rel="icon" type = "image/x-icon" href = "favicon.ico">
+    <!-- Optional favicon (small icon in browser tab). 
+         Browser will look for favicon.ico in the same folder. -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <!-- ## Google Font for better usability and aesthetics -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sekuya&display=swap" rel="stylesheet">
-
+    <!-- External CSS for just a few simple styles and one media query -->
     <link rel="stylesheet" href="exam3.css">
 </head>
-<body class="sekuya-regular">
-    <!-- ## Accessibility: skip link lets keyboard users jump to main content -->
+<body>
+    <!-- Skip link = lets keyboard users jump straight to the main content 
+         (Accessibility best practice) -->
     <a href="#mainContent" class="skip-link">Skip to main content</a>
 
     <header>
-        <!-- ## Semantic header with clear heading hierarchy -->
+        <!-- Main heading of the page -->
         <h1>IST 263 – Post Exam 2 Practice Page</h1>
+
+        <!-- Short description of what this page demonstrates -->
         <p>Responsive Web Design, JavaScript, DOM, Accessibility, and Usability in one simple page.</p>
 
-        <!-- ## Hamburger button, visible on small screens (RWD + JS) -->
-        <button id="menuToggle" aria-expanded="false" aria-controls="mainNav">
-            ☰ Menu
-        </button>
-
-        <!-- ## Semantic navigation for better accessibility -->
-        <nav id="mainNav">
+        <!-- Basic navigation using semantic <nav> and a list of links.
+             No hamburger here to keep it simple. -->
+        <nav>
             <ul>
                 <li><a href="#rwd">Responsive Design</a></li>
-                <li><a href="#js">JavaScript & DOM</a></li>
+                <li><a href="#js">JavaScript &amp; DOM</a></li>
                 <li><a href="#accessibility">Accessibility</a></li>
                 <li><a href="#usability">Usability</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- main = semantic region for the main content of the page -->
     <main id="mainContent">
         <!-- ===================== RWD SECTION ===================== -->
         <section id="rwd">
             <h2>Responsive Web Design (RWD)</h2>
+
+            <!-- Explains what RWD concepts are being shown on this page -->
             <p>
-                This section shows how the <strong>viewport meta tag</strong>, <strong>media queries</strong>, 
-                <strong>flexible images</strong>, and <strong>flexbox</strong> work together to create 
-                a responsive layout.
+                This section shows how the <strong>viewport meta tag</strong>,
+                a simple <strong>media query</strong>, and a <strong>flexible image</strong>
+                work together to create a responsive layout.
             </p>
 
+            <!-- This box contains messages that change depending on screen width -->
             <div class="message">
-                <!-- ## Text changes based on media query breakpoints -->
+                <!-- large-only text = only visible on larger screens -->
                 <p class="large-only">I’m large: viewport width is over 800px.</p>
+
+                <!-- small-only text = only visible on smaller screens -->
                 <p class="small-only">I’m small: viewport width is 800px or less.</p>
+
                 <p>Resize your browser window to see this message change.</p>
             </div>
 
-            <!-- ## Flexible image example (max-width: 100%; height: auto) -->
+            <!-- Flexible image example. width:100%; height:auto makes the image shrink
+                 nicely on phones and tablets instead of overflowing. -->
             <figure>
                 <img 
                     src="ChatGPT Image Dec 10, 2025, 12_33_45 PM.png" 
                     alt="Simple blue placeholder banner with white text reading: Welcome to My Website."
                     style="width:100%; height:auto;"
                 >
-
                 <figcaption>
                     This image scales down on tablets and phones instead of overflowing the screen.
                 </figcaption>
             </figure>
         </section>
-
+        
         <!-- ===================== JAVASCRIPT & DOM SECTION ===================== -->
         <section id="js">
-            <h2>JavaScript & DOM Examples</h2>
+            <h2>JavaScript &amp; DOM Examples</h2>
+
+            <!-- This intro paragraph explains which JS/DOM concepts are used below -->
             <p>
                 Below are simple examples of <strong>alerts</strong>, <strong>event handlers</strong>, 
                 and <strong>DOM manipulation</strong> using <code>getElementById</code>, 
                 <code>innerHTML</code>, <code>style</code>, and <code>setAttribute</code>.
             </p>
 
-            <div class="flex-cards">
-                <!-- ## Card 1: basic JS alert and function -->
-                <article class="card">
-                    <h3>1. Basic Alert & Function</h3>
-                    <p>Click the button to run a JavaScript function that shows an alert.</p>
-                    <button id="alertButton">Show Alert</button>
-                    <p><small>This is similar to the classic <code>alert("Hello World");</code> example.</small></p>
-                </article>
+            <!-- Example 1: Basic alert when button is clicked -->
+            <article>
+                <h3>1. Basic Alert &amp; Function</h3>
+                <p>Click the button to run a JavaScript function that shows an alert.</p>
 
-                <!-- ## Card 2: change innerHTML and style using DOM -->
-                <article class="card">
-                    <h3>2. Change Text & Style (innerHTML + style)</h3>
-                    <p id="jsMessage">This text will be changed by JavaScript.</p>
-                    <button id="changeTextButton">Change the message</button>
-                    <p><small>We use <code>getElementById</code>, <code>innerHTML</code>, and <code>style.color</code>.</small></p>
-                </article>
+                <!-- The button has an id so JS can find it and attach an event listener -->
+                <button id="alertButton">Show Alert</button>
 
-                <!-- ## Card 3: setAttribute() to change an image -->
-                <article class="card">
-                    <h3>3. Change Image with setAttribute()</h3>
-                    <p>Click the button to swap the image source and alt text using JavaScript.</p>
-                    <img
-                        id="demoImage"
-                        src="check.png"
-                        alt="Placeholder image that will be replaced when the button is pressed."
-                        style="max-width:100%;height:auto;border:1px solid #ccc;border-radius:6px;margin-bottom:0.75rem;"
-                    >
-                    <button id="swapImageButton">Swap Image</button>
-                    <p><small>This uses <code>setAttribute("src", ...)</code> and <code>setAttribute("alt", ...)</code>.</small></p>
-                </article>
-            </div>
+                <p><small>This is similar to the classic <code>alert("Hello World");</code> example.</small></p>
+            </article>
+
+            <!-- Example 2: Change text and style using innerHTML + style -->
+            <article>
+                <h3>2. Change Text &amp; Style (innerHTML + style)</h3>
+
+                <!-- This paragraph will be changed by JavaScript -->
+                <p id="jsMessage">This text will be changed by JavaScript.</p>
+
+                <!-- Button that triggers the changeMessage() function in exam3.js -->
+                <button id="changeTextButton">Change the message</button>
+
+                <p><small>We use <code>getElementById</code>, <code>innerHTML</code>, and <code>style.color</code>.</small></p>
+            </article>
+
+            <!-- Example 3: setAttribute() to change an image source and alt text -->
+            <article>
+                <h3>3. Change Image with setAttribute()</h3>
+
+                <p>Click the button to swap the image source and alt text using JavaScript.</p>
+
+                <!-- This image will be updated by JS using setAttribute -->
+                <img
+                    id="demoImage"
+                    src="check.png"
+                    alt="Placeholder image that will be replaced when the button is pressed."
+                    style="max-width:100%;height:auto;"
+                >
+
+                <!-- Button that triggers the swapImage code in exam3.js -->
+                <button id="swapImageButton">Swap Image</button>
+
+                <p><small>This uses <code>setAttribute("src", ...)</code> and <code>setAttribute("alt", ...)</code>.</small></p>
+            </article>
         </section>
 
         <!-- ===================== ACCESSIBILITY SECTION ===================== -->
         <section id="accessibility">
             <h2>Accessibility (A11y) Examples</h2>
+
+            <!-- Explains what “accessibility” means and what features this page uses -->
             <p>
                 Accessibility means making the web work for people with different abilities. 
                 This page uses <strong>semantic tags</strong>, <strong>alt text</strong>, proper 
                 <strong>headings</strong>, a <strong>skip link</strong>, and <strong>form labels</strong>.
             </p>
 
-            <!-- ## Example image with meaningful alt text -->
+            <!-- Example image with meaningful alt text -->
             <figure>
                 <img
                     class="demo-image"
@@ -136,16 +157,20 @@
                 </figcaption>
             </figure>
 
-            <!-- ## Accessible form with labels -->
+            <!-- Accessible form with labels linked to inputs by for/id -->
             <form aria-label="Simple feedback form">
                 <div>
+                    <!-- 'for' must match the input's id so screen readers know which label belongs to which field -->
                     <label for="nameInput">Name:</label>
                     <input id="nameInput" type="text" name="name" placeholder="Your name">
                 </div>
+
                 <div>
                     <label for="feedbackInput">One word about this demo:</label>
                     <input id="feedbackInput" type="text" name="feedback" placeholder="Cool, helpful, etc.">
                 </div>
+
+                <!-- Button of type="submit" even though the form doesn’t actually send anywhere -->
                 <button type="submit">Submit (demo only)</button>
             </form>
 
@@ -156,11 +181,14 @@
 
         <!-- ===================== USABILITY SECTION ===================== -->
         <section id="usability">
-            <h2>Usability & Testing Notes</h2>
+            <h2>Usability &amp; Testing Notes</h2>
+
+            <!-- Quick summary of the main usability concepts from class -->
             <p>
                 Usability is about how easy and pleasant it is for users to use a website. 
-                Key concepts from class included:
+                Key concepts from class include:
             </p>
+
             <ul>
                 <li><strong>Learnability</strong> – Is it easy to understand the interface the first time?</li>
                 <li><strong>Efficiency</strong> – Can users complete tasks quickly once they’ve learned it?</li>
@@ -168,19 +196,20 @@
                 <li><strong>Errors</strong> – How many mistakes do users make, and how easy is recovery?</li>
                 <li><strong>Satisfaction</strong> – Is the experience pleasant overall?</li>
             </ul>
+
             <p>
-                This page supports usability with clear headings, consistent layout, good contrast,
+                This page supports usability with clear headings, simple layout, readable text,
                 and descriptive link text.
             </p>
         </section>
     </main>
 
     <footer>
-        <!-- ## Footer with semantic tag -->
+        <!-- Footer content with a semantic <footer> tag -->
         <p>&copy; 2025 IST 263 Practice – Built to review topics from after Exam 2.</p>
     </footer>
 
-    <!-- ===================== JAVASCRIPT ===================== -->
+    <!-- External JavaScript file with small, focused examples -->
     <script src="exam3.js"></script>
 </body>
 </html>

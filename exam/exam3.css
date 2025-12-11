@@ -1,26 +1,26 @@
-/* ## Global styles: set font and basic layout */
-* {
-    box-sizing: border-box;
-}
+/* 
+   exam3.css
+   Only the styles we need for:
+   - Basic readable layout
+   - Skip link for accessibility
+   - RWD text change (large-only / small-only)
+   - Flexible image
+*/
 
-.sekuya-regular {
-    font-family: "Sekuya", system-ui;
-    font-weight: 400;
-    font-style: normal;
-}
-
+/* Use a simple system font and basic page defaults */
 body {
     margin: 0;
-    font-family: "Sekuya", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.5;
     background-color: #fdfdfd;
-    color: #ff1493;
+    color: #222;
 }
 
-/* ## Skip link for accessibility (keyboard users & screen readers) */
+/* Skip link: normally hidden off-screen, but appears when focused.
+   Helpful for keyboard users who want to skip navigation. */
 .skip-link {
     position: absolute;
-    left: -999px;
+    left: -999px;        /* hide off-screen */
     top: 0;
     background: #000;
     color: #fff;
@@ -29,11 +29,12 @@ body {
 }
 
 .skip-link:focus {
-    left: 0;
+    left: 0;             /* bring into view when tabbed to */
 }
 
+/* Simple header with a different background color for contrast */
 header {
-    background: #0b3c5d; /* good color contrast */
+    background: #0b3c5d;
     color: #fff;
     padding: 1rem;
 }
@@ -43,24 +44,20 @@ header h1 {
     font-size: 1.6rem;
 }
 
-/* ## Flexbox navigation so it can wrap on small screens */
-nav {
-    margin-top: 0.5rem;
-}
-
+/* Basic nav as a horizontal list; will naturally wrap on small screens */
 nav ul {
-    list-style: none;
+    list-style: none;    /* remove bullets */
     padding: 0;
-    margin: 0;
-    display: flex; /* flexbox for horizontal layout */
+    margin: 0.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;     /* allow wrapping on smaller screens */
     gap: 1rem;
-    flex-wrap: wrap; /* wrap on smaller screens */
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 nav a:hover,
@@ -68,18 +65,7 @@ nav a:focus {
     text-decoration: underline;
 }
 
-/* ## Hamburger button shown on small screens */
-#menuToggle {
-    display: none;
-    background: #1d65a6;
-    border: none;
-    color: #fff;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
+/* Main content centered with max width for readability */
 main {
     padding: 1rem;
     max-width: 960px;
@@ -90,37 +76,15 @@ section {
     margin-bottom: 2rem;
 }
 
-h2 {
-    margin-top: 0;
-}
-
-/* ## Flexible image: will shrink to fit smaller viewports */
+/* Flexible image: will shrink to fit smaller viewports */
 .demo-image {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
-    border: 2px solid #ccc;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
 
-/* ## Simple card layout using flexbox for usability & responsiveness */
-.flex-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.card {
-    flex: 1 1 250px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    background: #fafafa;
-}
-
-.card h3 {
-    margin-top: 0;
-}
-
+/* Message box that contains the RWD text demo */
 .message {
     padding: 0.75rem;
     border-radius: 4px;
@@ -128,7 +92,9 @@ h2 {
     border: 1px solid #c8e6c9;
 }
 
-/* ## RWD participation idea: show different text depending on viewport width */
+/* RWD text:
+   - On large screens, show .large-only and hide .small-only 
+   - On small screens (via media query), we flip them */
 .large-only {
     display: block;
 }
@@ -137,10 +103,11 @@ h2 {
     display: none;
 }
 
-/* ## Media query: when width is 800px or less, we change styles */
+/* Media query: when viewport width is 800px or less,
+   we change background color and toggle which message is shown. */
 @media (max-width: 800px) {
     body {
-        background-color: #f0f8ff; /* subtle color change to show RWD */
+        background-color: #f0f8ff;  /* subtle color change to show RWD in action */
     }
 
     .large-only {
@@ -150,26 +117,9 @@ h2 {
     .small-only {
         display: block;
     }
-
-    /* ## Make nav vertical and hide behind hamburger on small screens */
-    nav {
-        display: none; /* hidden by default on small screens */
-    }
-
-    nav.open {
-        display: block; /* shown when JS toggles the class */
-    }
-
-    nav ul {
-        flex-direction: column;
-    }
-
-    #menuToggle {
-        display: inline-block;
-        margin-top: 0.5rem;
-    }
 }
 
+/* Footer styling */
 footer {
     background: #0b3c5d;
     color: #fff;
