@@ -171,8 +171,9 @@ section {
 }
 
 .timeline-entry {
-    align-items: flex-start;
-    gap: 2.5rem;
+    align-items: stretch;
+    grid-template-columns: 1fr;
+    text-align: left;
 }
 
 .timeline-entry ul {
@@ -185,7 +186,7 @@ section {
 }
 
 .timeline-entry figure {
-    max-width: 320px;
+    max-width: 240px;
     justify-self: center;
 }
 
