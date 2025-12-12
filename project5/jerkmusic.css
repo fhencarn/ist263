@@ -103,6 +103,25 @@ nav a:focus-visible {
     transform: translateY(-2px);
 }
 
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: 2px solid rgba(111, 169, 255, 0.7);
+    border-radius: 999px;
+    padding: 0.4rem 1.25rem;
+    color: var(--bright-white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border 0.2s ease, color 0.2s ease;
+}
+
+.nav-toggle:hover,
+.nav-toggle:focus-visible {
+    background: var(--starshine-blue);
+    color: var(--deep-navy);
+    border-color: transparent;
+}
+
 .skip-link {
     position: absolute;
     left: 50%;
@@ -141,9 +160,10 @@ section {
 }
 
 .feature-split {
-    display: flex;
+    display: grid;
     gap: 2rem;
     align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .timeline-page main {
@@ -153,10 +173,6 @@ section {
 .timeline-entry {
     align-items: flex-start;
     gap: 2.5rem;
-}
-
-.timeline-entry .section-copy {
-    flex: 1 1 60%;
 }
 
 .timeline-entry ul {
@@ -169,8 +185,8 @@ section {
 }
 
 .timeline-entry figure {
-    flex: 0 0 280px;
     max-width: 320px;
+    justify-self: center;
 }
 
 .section-copy {
@@ -244,17 +260,12 @@ a {
 }
 
 .opinions-section {
-    align-items: stretch;
+    grid-template-columns: 1fr;
 }
 
 .opinions-section .section-copy {
-    flex: 1 1 420px;
-}
-
-.opinions-section figure {
-    flex: 0 0 240px;
-    max-width: 280px;
-    margin-inline: auto;
+    max-width: 720px;
+    margin: 0 auto;
 }
 
 blockquote {
@@ -298,7 +309,7 @@ footer {
 
 @media (max-width: 1024px) {
     .feature-split {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
 
     .artists-section ul {
@@ -306,26 +317,41 @@ footer {
     }
 }
 
-@media (max-width: 640px) {
-    nav ul {
-        flex-direction: column;
-        align-items: stretch;
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 0.5rem;
+        width: min(220px, 90%);
     }
 
-    nav a {
-        text-align: center;
+    .site-nav ul {
+        flex-direction: column;
+        align-items: stretch;
         width: 100%;
     }
 
+    .site-nav ul li {
+        width: 100%;
+    }
+
+    .site-nav ul a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .site-nav:not(.nav-open) ul {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
     main {
         padding: 2rem 1rem 3rem;
     }
 
     section {
         padding: 1.75rem;
-    }
-
-    .opinions-section figure {
-        max-width: none;
     }
 }
