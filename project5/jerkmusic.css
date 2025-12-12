@@ -146,6 +146,33 @@ section {
     align-items: center;
 }
 
+.timeline-page main {
+    gap: 2.5rem;
+}
+
+.timeline-entry {
+    align-items: flex-start;
+    gap: 2.5rem;
+}
+
+.timeline-entry .section-copy {
+    flex: 1 1 60%;
+}
+
+.timeline-entry ul {
+    margin: 1rem 0 0;
+    padding-left: 1.25rem;
+}
+
+.timeline-entry li {
+    margin-bottom: 0.65rem;
+}
+
+.timeline-entry figure {
+    flex: 0 0 280px;
+    max-width: 320px;
+}
+
 .section-copy {
     flex: 1;
 }
@@ -225,8 +252,9 @@ a {
 }
 
 .opinions-section figure {
-    flex: 0 0 320px;
-    max-width: 360px;
+    flex: 0 0 240px;
+    max-width: 280px;
+    margin-inline: auto;
 }
 
 blockquote {
