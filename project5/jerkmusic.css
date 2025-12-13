@@ -213,6 +213,17 @@ figure img {
     box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.4);
 }
 
+body.artists-page figure {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.artists-page figure img {
+    width: 100%;
+    height: auto;
+}
+
 figcaption {
     margin-top: 0.75rem;
     font-size: 0.95rem;
