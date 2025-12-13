@@ -171,9 +171,10 @@ section {
 }
 
 .timeline-entry {
-    align-items: stretch;
-    grid-template-columns: 1fr;
+    align-items: center;
+    grid-template-columns: minmax(260px, 1fr) minmax(140px, 220px);
     text-align: left;
+    column-gap: 1.5rem;
 }
 
 .timeline-entry ul {
@@ -315,6 +316,10 @@ footer {
 
     .artists-section ul {
         columns: 1;
+    }
+
+    .timeline-entry {
+        grid-template-columns: 1fr;
     }
 }
 
