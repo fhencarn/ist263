@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mentorAI Settings & Options | Replica</title>
+  <style>
+    :root {
+      --text: #172b4d;
+      --muted: #44546f;
+      --link: #0c66e4;
+      --line: #dfe1e6;
+      --table-head: #deebff;
+      --tip-bg: #e9f2ff;
+      --tip-border: #b3d4ff;
+      --page: #ffffff;
+      --faq-open: #f7f8f9;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--page);
+      line-height: 1.55;
+    }
+
+    .page {
+      width: min(1080px, 88%);
+      margin: 0 auto;
+      padding: 40px 0 72px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 500;
+      margin: 24px 0 22px;
+      letter-spacing: -0.03em;
+      color: #253858;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 42px;
+    }
+
+    .meta .avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #1d4f91;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    p {
+      font-size: 1.06rem;
+      margin: 0 0 16px;
+      color: #253858;
+    }
+
+    .lead {
+      font-size: 1.18rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .inline-nav {
+      font-size: 1.02rem;
+      line-height: 1.7;
+      margin: 8px 0 34px;
+    }
+
+    .inline-nav a {
+      color: var(--link);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .inline-nav a:hover { text-decoration: underline; }
+
+    h2 {
+      font-size: 1.15rem;
+      margin: 46px 0 14px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-weight: 700;
+      color: #253858;
+    }
+
+    .first-section {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 28px;
+      font-size: 1.4rem;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      margin: 0 0 16px;
+      color: #253858;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    ul {
+      margin: 10px 0 8px 34px;
+      padding: 0;
+      font-size: 1.02rem;
+    }
+
+    li { margin-bottom: 10px; }
+
+    .caption {
+      text-align: center;
+      font-size: 0.96rem;
+      color: #4f5b6b;
+      margin: 14px 0 24px;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fafbfc;
+      margin: 20px 0 8px;
+    }
+
+    .image-placeholder img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 520px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0 22px;
+      table-layout: fixed;
+      font-size: 0.99rem;
+    }
+
+    th, td {
+      border: 1px solid #c8ccd0;
+      padding: 16px 14px;
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    th {
+      background: var(--table-head);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .tip {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--tip-bg);
+      border-left: 5px solid var(--tip-border);
+      border-radius: 6px;
+      padding: 16px 18px;
+      margin: 18px 0 28px;
+      font-size: 1rem;
+    }
+
+    .tip .icon {
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .note-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--link);
+      border: 1px solid #cfd4da;
+      border-radius: 6px;
+      padding: 7px 10px;
+      text-decoration: none;
+      font-size: 0.98rem;
+      margin: 8px 0 18px;
+    }
+
+    .faq-stack {
+      display: grid;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    details.faq {
+      border: 1px solid #d0d4d9;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    details.faq[open] {
+      border-color: #7aa7ff;
+      box-shadow: inset 0 0 0 1px #7aa7ff;
+    }
+
+    details.faq summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 16px 18px;
+      font-size: 1rem;
+      color: #344563;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    details.faq summary::-webkit-details-marker { display: none; }
+
+    .faq-body {
+      padding: 0 22px 18px 56px;
+      font-size: 1rem;
+      background: var(--faq-open);
+    }
+
+    .caret {
+      font-size: 1rem;
+      color: #42526e;
+      width: 18px;
+      flex: 0 0 18px;
+    }
+
+    .muted { color: var(--muted); }
+
+    .mini-code {
+      font-family: "SFMono-Regular", Consolas, monospace;
+      background: #f4f5f7;
+      border: 1px solid #dfe1e6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+
+    .related {
+      margin-top: 44px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .related-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 18px;
+      background: #fff;
+      min-height: 92px;
+    }
+
+    .related-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.02rem;
+    }
+
+    .small-label {
+      margin-top: 34px;
+      margin-bottom: 14px;
+      color: #253858;
+      font-size: 0.98rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (max-width: 800px) {
+      .page { width: 92%; }
+      h1 { font-size: 2.2rem; }
+      .related { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>mentorAI Settings &amp; Options</h1>
+
+    <div class="meta">
+      <span><span class="avatar">FH</span>By Fernando Hernandez</span>
+      <span>📖 2 min</span>
+      <span>📈 12</span>
+      <span>😊 Add a reaction</span>
+    </div>
+
+    <p class="lead">Use <strong>Settings &amp; Options</strong> to customize how your mentorAI looks, behaves, and interacts with users. Each setting helps tailor your mentor’s purpose, audience visibility, and engagement style.</p>
+
+    <div class="inline-nav">
+      <a href="#overview">🧭 Edit Mentor Overview</a> |
+      <a href="#settings">⚙️ Settings</a> |
+      <a href="#llm">🧠 LLM</a> |
+      <a href="#prompts">💬 Prompts</a> |
+      <a href="#safety">🛡️ Safety</a> |
+      <a href="#disclaimers">❗ Disclaimers</a> |
+      <a href="#tools">🔧 Tools</a> |
+      <a href="#memory">🧩 Memory</a> |
+      <a href="#history">🕓 History</a> |
+      <a href="#datasets">📊 Datasets</a> |
+      <a href="#embed">🖥️ Embed</a> |
+      <a href="#faq">❓ Frequently Asked Questions (FAQ)</a>
+    </div>
+
+    <section id="overview">
+      <div class="section-title first-section">🧭 Edit Mentor Overview</div>
+      <p>The <strong>Edit Mentor</strong> panel is where you manage and customize every aspect of your mentorAI. Each tab focuses on a different part of your mentor’s behavior, visibility, or capabilities — from basic setup to advanced integrations.</p>
+      <p><strong>Available Tabs:</strong></p>
+      <ul>
+        <li><strong>⚙️ Settings:</strong> Define your mentor’s name, description, category, and visibility permissions.</li>
+        <li><strong>🧠 LLM:</strong> Choose which AI model your mentor uses and fine-tune its intelligence level.</li>
+        <li><strong>💬 Prompts:</strong> Configure default, proactive, and guided prompts that shape how the mentor interacts with users.</li>
+        <li><strong>🛡️ Safety:</strong> Adjust moderation filters and set behavior limits to ensure safe, respectful interactions.</li>
+        <li><strong>❗ Disclaimers:</strong> Add custom messages or disclaimers for transparency and ethical guidance.</li>
+        <li><strong>🔧 Tools:</strong> Connect your mentor to additional functions or APIs to enhance its capabilities.</li>
+        <li><strong>🧩 Memory:</strong> Manage what information your mentor retains or recalls during conversations.</li>
+        <li><strong>🕓 History:</strong> View and manage recent interactions for monitoring or improvement.</li>
+        <li><strong>📊 Datasets:</strong> Upload or connect resources the mentor can use in responses.</li>
+        <li><strong>🖥️ Embed:</strong> Generate and customize code to place mentorAI on another website.</li>
+      </ul>
+    </section>
+
+    <section id="settings">
+      <h2></h2>
+      <div class="section-title">⚙️ Settings</div>
+      <p>The <strong>Settings tab</strong> controls the mentor’s identity, audience, and visibility. Use it to define who the mentor is for and how it appears to users.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Setting Option</th>
+            <th>Functions, Examples, Tips</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>🧠 Name</strong></td>
+            <td>Defines the mentor’s display name so users can identify and search for it.<br><br><strong>Example:</strong> Research &amp; Innovation MentorAI<br><strong>Tip:</strong> Choose a name that clearly communicates the mentor’s focus area or purpose.</td>
+          </tr>
+          <tr>
+            <td><strong>🗒️ Description</strong></td>
+            <td>Outlines what the mentor does, who it supports, and how it helps.<br><br><strong>Tip:</strong> Write in a short paragraph that focuses on function and value to students.</td>
+          </tr>
+          <tr>
+            <td><strong>🧭 Category</strong></td>
+            <td>Groups your mentorAI into a domain such as AI Assistance, Advisor, or Artificial Intelligence.</td>
+          </tr>
+          <tr>
+            <td><strong>👁️ Who Can View?</strong></td>
+            <td>Controls which users can see this mentorAI in the directory. Common options include Students, Administrators, and Anyone.</td>
+          </tr>
+          <tr>
+            <td><strong>💬 Who Can Chat?</strong></td>
+            <td>Determines who can start conversations. <strong>Authenticated Users</strong> is the safer option for university tools, while <strong>Anyone</strong> is better for public-facing mentors.</td>
+          </tr>
+          <tr>
+            <td><strong>💾 Save</strong></td>
+            <td>Saves all entered information. Required fields should be completed before saving.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="llm">
+      <h2></h2>
+      <div class="section-title">🧠 LLM</div>
+      <p>The <strong>LLM tab</strong> lets you choose the AI model that powers your mentorAI. Different providers can shape tone, reasoning, and the type of responses your mentor gives.</p>
+
+      <div class="image-placeholder">
+        <img src="images/profile.jpg" alt="LLM panel placeholder" />
+      </div>
+      <p class="caption">Example of MentorAI’s LLM panel. Replace this placeholder with a screenshot of the actual interface when ready.</p>
+
+      <ul>
+        <li><strong>ChatGPT (OpenAI):</strong> Strong for structured reasoning, academic support, and polished professional communication.</li>
+        <li><strong>Gemini (Google):</strong> Useful for research, multimodal interpretation, and broader information synthesis.</li>
+        <li><strong>Claude (Anthropic):</strong> Effective for long-form writing, nuanced responses, and thoughtful explanation.</li>
+      </ul>
+    </section>
+
+    <section id="prompts">
+      <h2></h2>
+      <div class="section-title">💬 Prompts</div>
+      <p>The <strong>Prompts tab</strong> helps define the mentor’s role, opening message, and suggested ways for users to begin a conversation.</p>
+
+      <div class="image-placeholder">
+        <img src="images/profile.jpg" alt="Prompts panel placeholder" />
+      </div>
+      <p class="caption">Example of MentorAI’s Prompts panel showing active System, Proactive, and Guided Prompts for the Research &amp; Innovation MentorAI.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>🧱 System Prompt</th>
+            <th>⚡ Proactive Prompt</th>
+            <th>🧭 Guided Prompt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Use:</strong> Establishes the mentor’s overall purpose and tone. Think of it like a job description for the mentor.</td>
+            <td><strong>Use:</strong> A short, automatic message that welcomes or engages users when a chat begins.</td>
+            <td><strong>Use:</strong> Offers ready-made suggestions for users to click and start a conversation.</td>
+          </tr>
+          <tr>
+            <td><strong>Use this for:</strong> Describing the mentor’s role and how it should support users.</td>
+            <td><strong>Use this for:</strong> Inviting users to ask questions or share what they need help with.</td>
+            <td><strong>Use this for:</strong> Common actions or student questions such as “Help me plan my essay” or “Explain this concept.”</td>
+          </tr>
+          <tr>
+            <td><strong>Tip:</strong> Keep it focused on what the mentor can do for the intended audience.</td>
+            <td><strong>Tip:</strong> Keep it friendly, short, and open-ended.</td>
+            <td><strong>Tip:</strong> Add prompts that match common campus topics or student tasks.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>💬 <strong>Suggested Prompts</strong> appear as <em>conversation starters</em> at the bottom of your mentorAI chat window. These help users begin a conversation faster by suggesting common or useful questions related to the mentor’s topic.</p>
+
+      <div class="tip">
+        <div class="icon">💡</div>
+        <div><strong>Tip:</strong> Keep suggested prompts short and action-oriented — they work best when they feel natural and easy to click.</div>
+      </div>
+    </section>
+
+    <section id="safety">
+      <h2></h2>
+      <div class="section-title">🛡️ Safety</div>
+      <p>The <strong>Safety tab</strong> defines moderation and response boundaries so mentorAI can guide conversations responsibly.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Function</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Moderation Prompt</strong></td>
+            <td>Describes which user inputs should be flagged, such as harassment, hate speech, threats, or harmful behavior.</td>
+          </tr>
+          <tr>
+            <td><strong>Moderation Response</strong></td>
+            <td>The response shown when user input violates communication or behavior guidelines.</td>
+          </tr>
+          <tr>
+            <td><strong>Safety Prompt</strong></td>
+            <td>Defines what types of questions the mentor should avoid answering, especially in high-risk domains.</td>
+          </tr>
+          <tr>
+            <td><strong>Safety Response</strong></td>
+            <td>The message displayed when mentorAI blocks or redirects an unsafe request.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="disclaimers">
+      <h2></h2>
+      <div class="section-title">❗ Disclaimers</div>
+      <p>The <strong>Disclaimers tab</strong> lets you add advisory messages above the chat window for transparency and user awareness.</p>
+
+      <div class="image-placeholder">
+        <img src="images/profile.jpg" alt="Disclaimers panel placeholder" />
+      </div>
+      <p class="caption">Replace this placeholder with a screenshot if you want to show the live Disclaimers panel in the future.</p>
+
+      <div class="tip">
+        <div class="icon">ℹ️</div>
+        <div><strong>Example disclaimer:</strong> mentorAI can help you explore ideas and information, but important academic, health, legal, and policy-related information should still be verified with trusted sources.</div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <h2></h2>
+      <div class="section-title">🔧 Tools</div>
+      <p>The <strong>Tools tab</strong> lets you manage what additional resources your mentorAI can access while responding to users.</p>
+      <p>Find additional information here:</p>
+      <a class="note-link" href="#">📄 mentorAI - Tools</a>
+
+      <div class="image-placeholder">
+        <img src="images/profile.jpg" alt="Tools panel placeholder" />
+      </div>
+      <p class="caption">Example of MentorAI’s Tools panel showing Trained Documents and Web Search features enabled for expanded functionality.</p>
+
+      <details class="faq">
+        <summary><span class="caret">▸</span><span>🗂️ Using Trained Documents?</span></summary>
+        <div class="faq-body">
+          <p>Enables mentorAI to reference connected datasets and uploaded materials when generating responses.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary><span class="caret">▸</span><span>🌐 Using Web Search?</span></summary>
+        <div class="faq-body">
+          <p>Allows the mentor to gather current information from the web instead of relying only on trained content.</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="memory">
+      <h2></h2>
+      <div class="section-title">🧩 Memory</div>
+      <p>The <strong>Memory tab</strong> is designed to let mentorAI store and reference helpful information from past conversations.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Memory Category</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Personal Information</strong></td>
+            <td>Notes about user context or preferences when appropriate and privacy-safe.</td>
+          </tr>
+          <tr>
+            <td><strong>Lessons Learned</strong></td>
+            <td>Takeaways or patterns recognized from previous interactions.</td>
+          </tr>
+          <tr>
+            <td><strong>Help Requests</strong></td>
+            <td>Common support requests or recurring questions users bring to the mentor.</td>
+          </tr>
+          <tr>
+            <td><strong>Knowledge Gaps</strong></td>
+            <td>Areas where users frequently need clarification, helping future support improve.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="history">
+      <h2></h2>
+      <div class="section-title">🕓 History</div>
+      <p>The <strong>History tab</strong> allows you to review conversations, track engagement, and understand how users are interacting with a mentor over time.</p>
+
+      <ul>
+        <li><strong>User Search:</strong> Filter interactions by user.</li>
+        <li><strong>Date Range:</strong> Focus on a specific time period.</li>
+        <li><strong>Ratings:</strong> Review satisfaction and quality scores when available.</li>
+        <li><strong>Topic Trends:</strong> Spot repeated questions or common support patterns.</li>
+      </ul>
+    </section>
+
+    <section id="datasets">
+      <h2></h2>
+      <div class="section-title">📊 Datasets</div>
+      <p>The <strong>Datasets tab</strong> manages files, links, and connected knowledge sources that mentorAI can use in responses.</p>
+
+      <div class="image-placeholder">
+        <img src="images/profile.jpg" alt="Datasets panel placeholder" />
+      </div>
+      <p class="caption">Example of MentorAI’s Datasets panel showing active URLs and resources used to train the Research &amp; Innovation MentorAI.</p>
+
+      <div class="section-title" style="font-size: 1.12rem; margin-top: 20px;">📄 Supported Data Types</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Function</th>
+            <th>Limitations / Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>PowerPoint / PDF / DOCX / TXT / Excel</strong></td>
+            <td>Pulls readable text, titles, and notes to use as knowledge references.</td>
+            <td>Cannot read images, charts, or handwritten notes inside slides.</td>
+          </tr>
+          <tr>
+            <td><strong>Google Drive / OneDrive / Dropbox</strong></td>
+            <td>Connects directly to stored files in the cloud for continuous access.</td>
+            <td>Access permissions must allow mentorAI to view the file.</td>
+          </tr>
+          <tr>
+            <td><strong>URL / Web Crawler</strong></td>
+            <td>Uses website content to gather updated information or academic resources.</td>
+            <td>Must be a text-based site, not image-heavy or behind a login.</td>
+          </tr>
+          <tr>
+            <td><strong>YouTube / Video / Audio</strong></td>
+            <td>Uses transcripts or captions to extract educational or research-related information.</td>
+            <td>Requires transcript or subtitles to tokenize.</td>
+          </tr>
+          <tr>
+            <td><strong>GitHub</strong></td>
+            <td>Useful for research or coding-related projects where the mentor references repositories.</td>
+            <td>Reads text-based files only like <span class="mini-code">.py</span>, <span class="mini-code">.md</span>, or <span class="mini-code">.txt</span>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="embed">
+      <h2></h2>
+      <div class="section-title">🖥️ Embed</div>
+      <p>The <strong>Embed section</strong> controls how mentorAI appears and functions when placed on a website or another platform.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Setting</th>
+            <th>Function</th>
+            <th>Notes / Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Advanced CSS</strong></td>
+            <td>Lets you style the mentor widget with custom CSS.</td>
+            <td>Useful for matching platform branding or your portfolio design.</td>
+          </tr>
+          <tr>
+            <td><strong>Mode Selection</strong></td>
+            <td>Switch between Default and Advanced modes.</td>
+            <td>Advanced mode can show additional tabs or interface options.</td>
+          </tr>
+          <tr>
+            <td><strong>Context Aware</strong></td>
+            <td>Allows the mentor to use website context when answering.</td>
+            <td>Helpful for resource pages tied to a specific topic.</td>
+          </tr>
+          <tr>
+            <td><strong>Open by Default</strong></td>
+            <td>Makes the chat window automatically open when the page loads.</td>
+            <td>Useful for welcome messages or quick engagement.</td>
+          </tr>
+          <tr>
+            <td><strong>Show Attachment</strong></td>
+            <td>Adds file upload support directly in chat.</td>
+            <td>Helpful for PDFs, docs, or screenshots.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="faq">
+      <h2></h2>
+      <div class="section-title">❓ Frequently Asked Questions (FAQ)</div>
+
+      <div class="faq-stack">
+        <details class="faq" open>
+          <summary><span class="caret">⌄</span><span>Can MentorAI access or remember personal information from users?</span></summary>
+          <div class="faq-body">
+            <p>No. mentorAI does not automatically store personal data. Any saved memory must be manually added under the <strong>Memory</strong> tab by an administrator or creator/owner of a mentor.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary><span class="caret">▸</span><span>Why isn’t my dataset working or showing up in responses?</span></summary>
+          <div class="faq-body">
+            <p>mentorAI works best with text-based content. Files made mostly of images, charts, or non-readable formatting may not tokenize properly.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary><span class="caret">▸</span><span>What does “token count” mean in the Datasets section?</span></summary>
+          <div class="faq-body">
+            <p>Token count refers to chunks of readable text that the system has processed from a source.</p>
+          </div>
+        </details>
+
+        <details class="faq" open>
+          <summary><span class="caret">⌄</span><span>What’s the difference between Web Search and Trained Documents?</span></summary>
+          <div class="faq-body">
+            <p><em>Trained Documents</em> come from your uploaded datasets, while <em>Web Search</em> lets the mentor pull current information from the internet when responding.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="small-label">Related content &nbsp; ℹ️ &nbsp; <span class="muted">Send feedback</span></div>
+      <div class="related">
+        <div class="related-card">
+          <strong>mentorAI Creating A Mentor</strong>
+          <span class="muted">Josh Sidel</span>
+        </div>
+        <div class="related-card">
+          <strong>mentorAI - Using the API</strong>
+          <span class="muted">Aaron Starr</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
