@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fernando Hernandez | Projects</title>
+  <style>
+    :root {
+      --red: #a61e2a;
+      --blue: #163a70;
+      --light: #f7f9fc;
+      --dark: #1f2937;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --border: #dbe3ee;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #eef4fb 0%, #ffffff 100%);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+      object-fit: cover;
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--blue), var(--red));
+      color: white;
+      padding: 70px 0 55px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 12px;
+    }
+
+    .hero-text p {
+      font-size: 1.05rem;
+      max-width: 700px;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius);
+      padding: 22px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-card ul {
+      padding-left: 18px;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    main {
+      padding: 50px 0 80px;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 30px;
+      max-width: 760px;
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 26px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 0;
+    }
+
+    .project-image {
+      min-height: 320px;
+      background: #dde7f3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .project-image img {
+      height: 100%;
+      max-height: 420px;
+    }
+
+    .project-content {
+      padding: 28px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      background: #e8f0fb;
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .project-content h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+
+    .project-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+
+    .project-content p {
+      margin-bottom: 14px;
+    }
+
+    .project-content h4 {
+      font-size: 1rem;
+      color: var(--blue);
+      margin: 18px 0 8px;
+    }
+
+    .project-content ul {
+      padding-left: 18px;
+      margin-bottom: 16px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #112d56;
+    }
+
+    .btn-secondary {
+      background: #f3f6fa;
+      color: var(--red);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e8eef7;
+    }
+
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tool-pill {
+      font-size: 0.82rem;
+      background: #f6f8fb;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 10px;
+      color: var(--dark);
+    }
+
+    .note-box {
+      margin-top: 50px;
+      padding: 24px;
+      background: #fff7f7;
+      border: 1px solid #f2cccc;
+      border-radius: var(--radius);
+    }
+
+    .note-box h3 {
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: #0f1d33;
+      color: #dce4ef;
+      padding: 28px 0;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image {
+        min-height: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container hero">
+      <div class="hero-text">
+        <h1>Projects & Creative Work</h1>
+        <p>
+          A collection of academic, technical, and creative projects that reflect my interests in
+          AI, web development, communication, design, and problem-solving. For now, placeholder
+          visuals use <strong>profile.jpg</strong> until final screenshots, photos, and project assets are added.
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <h2>What this page shows</h2>
+        <ul>
+          <li>Real class projects and portfolio work</li>
+          <li>Technical, creative, and presentation skills</li>
+          <li>Live links, screenshots, replicas, and media embeds</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">
+        This page is structured around the projects you said you can currently display, plus a few
+        placeholders for work you may add once photos, files, and screenshots are ready.
+      </p>
+
+      <section class="projects-grid">
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="profile.jpg" alt="AI documentation placeholder image" />
+          </div>
+          <div class="project-content">
+            <span class="project-tag">AI / Documentation</span>
+            <h3>AI Documentation & Use Case Development</h3>
+            <p class="project-meta">Syracuse University ITS Enterprise Data & A.I. Team</p>
+            <p>
+              This project highlights documentation and educational materials I created around
+              emerging AI tools. It reflects my ability to make technical systems easier to
+              understand for students, faculty, and general users.
+            </p>
+            <h4>What this page will eventually include</h4>
+            <ul>
+              <li>Replica screenshots of documentation pages for portfolio display</li>
+              <li>Clear note that the content shown is a recreated sample, not the live internal page</li>
+              <li>Optional slide or screenshot from my intern final presentation</li>
+            </ul>
+            <h4>What this project demonstrates</h4>
+            <ul>
+              <li>Technical communication</li>
+              <li>AI literacy and responsible adoption</li>
+              <li>Ability to translate platform features into user-friendly guidance</li>
+            </ul>
+            <div class="tools">
+              <span class="tool-pill">Confluence</span>
+              <span class="tool-pill">AI Documentation</span>
+              <span class="tool-pill">User Education</span>
+              <span class="tool-pill">Presentation Design</span>
+            </div>
+            <div class="buttons">
+              <a class="btn btn-primary" href="#">View Project Page</a>
+              <a class="btn btn-secondary" href="#">Add Replica Screens</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="profile.jpg" alt="Tattle project placeholder image" />
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Creative Tech / Video</span>
+            <h3>Tattle – Information Technologies Project</h3>
+            <p class="project-meta">Business concept, AI-generated visuals, and video editing</p>
+            <p>
+              For this class project, I pitched a fictional company that sells furniture made from
+              recycled materials. I used AI to generate playful product ideas, then edited a funny
+              promotional advertisement to bring the concept to life.
+            </p>
+            <h4>Planned display elements</h4>
+            <ul>
+              <li>Embedded project video</li>
+              <li>Concept images of the furniture designs</li>
+              <li>Short written breakdown of the creative process</li>
+            </ul>
+            <h4>What this project demonstrates</h4>
+            <ul>
+              <li>Creative thinking and concept development</li>
+              <li>Use of generative AI for idea exploration</li>
+              <li>Video editing and storytelling through media</li>
+            </ul>
+            <div class="tools">
+              <span class="tool-pill">Generative AI</span>
+              <span class="tool-pill">DaVinci Resolve</span>
+              <span class="tool-pill">Storytelling</span>
+              <span class="tool-pill">Brand Concepting</span>
+            </div>
+            <div class="buttons">
+              <a class="btn btn-primary" href="#">Watch Video</a>
+              <a class="btn btn-secondary" href="#">View Concepts</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="profile.jpg" alt="Public speaking project placeholder image" />
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Presentation / Communication</span>
+            <h3>Information Reporting & Presentations</h3>
+            <p class="project-meta">Public speaking project on music production and sound engineering</p>
+            <p>
+              This presentation focused on one of my hobbies, making music, while also showing what
+              I learned about organizing information and presenting clearly. I explained tools,
+              production workflows, and sound engineering concepts in a way that was easier for a
+              general audience to understand.
+            </p>
+            <h4>Planned display elements</h4>
+            <ul>
+              <li>Slides from the presentation</li>
+              <li>Optional speech notes or summary</li>
+              <li>Short description of the topic and audience takeaway</li>
+            </ul>
+            <h4>Topics covered</h4>
+            <ul>
+              <li>BandLab and home music production basics</li>
+              <li>Digital audio workstations and recording workflows</li>
+              <li>Sound engineering concepts such as EQ, reverb, and distortion</li>
+            </ul>
+            <div class="tools">
+              <span class="tool-pill">PowerPoint</span>
+              <span class="tool-pill">Public Speaking</span>
+              <span class="tool-pill">Audio Engineering</span>
+              <span class="tool-pill">User-Friendly Communication</span>
+            </div>
+            <div class="buttons">
+              <a class="btn btn-primary" href="#">View Slides</a>
+              <a class="btn btn-secondary" href="#">Read Summary</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="profile.jpg" alt="Museum of Non-Existents placeholder image" />
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Writing / Web / Research</span>
+            <h3>Museum of Non-Existents</h3>
+            <p class="project-meta">Critical research and creative writing website project</p>
+            <p>
+              This project combined research, collaboration, and creative writing in a digital format.
+              My classmate and I built a themed website that explored things that do not exist,
+              turning an unusual concept into an interactive experience.
+            </p>
+            <h4>Live project</h4>
+            <ul>
+              <li>Interactive website available online</li>
+              <li>Strong example of combining writing, design, and storytelling</li>
+              <li>Creative differentiator within the portfolio</li>
+            </ul>
+            <h4>What this project demonstrates</h4>
+            <ul>
+              <li>Collaboration and digital storytelling</li>
+              <li>Creative presentation of research ideas</li>
+              <li>Website design for a themed user experience</li>
+            </ul>
+            <div class="tools">
+              <span class="tool-pill">HTML</span>
+              <span class="tool-pill">CSS</span>
+              <span class="tool-pill">Creative Writing</span>
+              <span class="tool-pill">Research</span>
+            </div>
+            <div class="buttons">
+              <a class="btn btn-primary" href="https://fhencarn.github.io/duang/layout/index.html" target="_blank">View Live Site</a>
+              <a class="btn btn-secondary" href="#">Add Project Notes</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="profile.jpg" alt="Front-end development placeholder image" />
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Web Development</span>
+            <h3>Front-End Web Development Projects</h3>
+            <p class="project-meta">Class websites built with HTML, CSS, and JavaScript</p>
+            <p>
+              These projects represent my hands-on experience building websites through class labs
+              and longer-form assignments. Together, they show my ability to structure information,
+              build layouts, and create user-facing digital experiences.
+            </p>
+            <h4>Included projects</h4>
+            <ul>
+              <li>Professional profile website</li>
+              <li>Jerk music informational website</li>
+              <li>Additional screenshots or code callouts can be added later</li>
+            </ul>
+            <h4>What this project demonstrates</h4>
+            <ul>
+              <li>HTML, CSS, and JavaScript fundamentals</li>
+              <li>Responsive layout and content organization</li>
+              <li>Ability to create both professional and themed web experiences</li>
+            </ul>
+            <div class="tools">
+              <span class="tool-pill">HTML</span>
+              <span class="tool-pill">CSS</span>
+              <span class="tool-pill">JavaScript</span>
+              <span class="tool-pill">GitHub Pages</span>
+            </div>
+            <div class="buttons">
+              <a class="btn btn-primary" href="https://fhencarn.github.io/ist263/professional-site/index.html" target="_blank">Professional Site</a>
+              <a class="btn btn-secondary" href="https://fhencarn.github.io/ist263/project5/artists.html" target="_blank">Jerk Music Site</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="profile.jpg" alt="Python project placeholder image" />
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Data / Python</span>
+            <h3>Intro to Python Final Project</h3>
+            <p class="project-meta">Urban forestry analysis and data storytelling</p>
+            <p>
+              This project focused on analyzing NYC urban forestry data to better understand tree
+              conditions, locations, and environmental impact. Once cleaned up, this section can
+              showcase both the final analysis and your ability to explain it clearly.
+            </p>
+            <h4>Planned display elements</h4>
+            <ul>
+              <li>1–2 screenshots of graphs, maps, or outputs</li>
+              <li>Optional embedded video explanation</li>
+              <li>Brief summary of the dataset and findings</li>
+            </ul>
+            <h4>What this project demonstrates</h4>
+            <ul>
+              <li>Python-based data analysis</li>
+              <li>Data cleaning and interpretation</li>
+              <li>Ability to communicate technical work clearly</li>
+            </ul>
+            <div class="tools">
+              <span class="tool-pill">Python</span>
+              <span class="tool-pill">Pandas</span>
+              <span class="tool-pill">NumPy</span>
+              <span class="tool-pill">Data Visualization</span>
+            </div>
+            <div class="buttons">
+              <a class="btn btn-primary" href="#">View Analysis</a>
+              <a class="btn btn-secondary" href="#">Embed Video</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="profile.jpg" alt="Accounting project placeholder image" />
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Excel / Finance</span>
+            <h3>Managerial Accounting Project</h3>
+            <p class="project-meta">Linked financial model and spreadsheet analysis</p>
+            <p>
+              This project can be displayed as a clean example of spreadsheet modeling and analytical
+              thinking. If the file is saved and looks polished, it would make a strong supporting
+              project for business, operations, or consulting roles.
+            </p>
+            <h4>Planned display elements</h4>
+            <ul>
+              <li>Embedded spreadsheet screenshot or dashboard image</li>
+              <li>Brief explanation of how the model was structured</li>
+              <li>Highlight of linked statements and automated calculations</li>
+            </ul>
+            <h4>What this project demonstrates</h4>
+            <ul>
+              <li>Excel modeling</li>
+              <li>Structured financial analysis</li>
+              <li>Attention to detail and logic-based problem-solving</li>
+            </ul>
+            <div class="tools">
+              <span class="tool-pill">Excel</span>
+              <span class="tool-pill">Financial Modeling</span>
+              <span class="tool-pill">Spreadsheet Logic</span>
+              <span class="tool-pill">Analysis</span>
+            </div>
+            <div class="buttons">
+              <a class="btn btn-primary" href="#">View Model</a>
+              <a class="btn btn-secondary" href="#">Add Screenshot</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="profile.jpg" alt="HCI project placeholder image" />
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Design / HCI</span>
+            <h3>Human-Centered Design Project</h3>
+            <p class="project-meta">Mental health app concept and design process</p>
+            <p>
+              This project shows how my team applied human-centered design principles to develop a
+              mental health app concept. It is a good fit for product, consulting, and UX-adjacent
+              roles because it focuses on users, process, and thoughtful design decisions.
+            </p>
+            <h4>Planned display elements</h4>
+            <ul>
+              <li>Wireframes, sketches, or screenshots from the project files</li>
+              <li>Short explanation of the user problem and proposed solution</li>
+              <li>Optional note on brainstorming and prototyping process</li>
+            </ul>
+            <h4>What this project demonstrates</h4>
+            <ul>
+              <li>User-centered problem solving</li>
+              <li>Prototyping and ideation</li>
+              <li>Design thinking and usability awareness</li>
+            </ul>
+            <div class="tools">
+              <span class="tool-pill">Human-Centered Design</span>
+              <span class="tool-pill">Prototyping</span>
+              <span class="tool-pill">UX Thinking</span>
+              <span class="tool-pill">Collaboration</span>
+            </div>
+            <div class="buttons">
+              <a class="btn btn-primary" href="#">View Concept</a>
+              <a class="btn btn-secondary" href="#">Add Wireframes</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="profile.jpg" alt="Wood finishing placeholder image" />
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Optional / Craftsmanship</span>
+            <h3>Wood Finishing Work</h3>
+            <p class="project-meta">Optional personal craftsmanship section</p>
+            <p>
+              This section is optional, but it could add personality and show hands-on work,
+              discipline, and attention to detail. If you choose to include it, strong photos would
+              make all the difference.
+            </p>
+            <h4>Best use for this section</h4>
+            <ul>
+              <li>Showcase before-and-after work or finished pieces</li>
+              <li>Highlight craftsmanship, process, and quality standards</li>
+              <li>Use as a personal touch rather than a core technical project</li>
+            </ul>
+            <h4>What this project demonstrates</h4>
+            <ul>
+              <li>Discipline and consistency</li>
+              <li>Manual craftsmanship and care for detail</li>
+              <li>Pride in process and completed work</li>
+            </ul>
+            <div class="tools">
+              <span class="tool-pill">Craftsmanship</span>
+              <span class="tool-pill">Quality Control</span>
+              <span class="tool-pill">Process Work</span>
+            </div>
+            <div class="buttons">
+              <a class="btn btn-primary" href="#">Add Photos</a>
+              <a class="btn btn-secondary" href="#">Keep Optional</a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="note-box">
+        <h3>Temporary Setup Note</h3>
+        <p>
+          Until your final screenshots, photos, video thumbnails, and graphics are ready, replace all
+          preview images with <strong>profile.jpg</strong>. Once you gather the assets, swap each image source
+          and update the placeholder buttons to point to live files, videos, Google Drive items, or
+          separate project detail pages.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Fernando Hernandez | Projects Page Template</p>
+    </div>
+  </footer>
+</body>
+</html>
